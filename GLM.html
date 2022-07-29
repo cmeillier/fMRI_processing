@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Task fMRI analysis &#8212; fMRI data analysis, connectivity study</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functional connectivity: definition, analysis and utility" href="FC.html" />
+    <link rel="prev" title="Introduction to fMRI data" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">fMRI data analysis, connectivity study</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to fMRI data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Task fMRI analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FC.html">
+   Functional connectivity: definition, analysis and utility
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGLM.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/GLM.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalities-on-task-fmri-analysis">
+   Generalities on task fMRI analysis.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-test-analysis-for-block-paradigm">
+   Statistical test analysis for block paradigm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalized-linear-model-glm">
+   Generalized Linear Model (GLM)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Task fMRI analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalities-on-task-fmri-analysis">
+   Generalities on task fMRI analysis.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-test-analysis-for-block-paradigm">
+   Statistical test analysis for block paradigm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalized-linear-model-glm">
+   Generalized Linear Model (GLM)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="task-fmri-analysis">
+<h1>Task fMRI analysis<a class="headerlink" href="#task-fmri-analysis" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<section id="generalities-on-task-fmri-analysis">
+<h2>Generalities on task fMRI analysis.<a class="headerlink" href="#generalities-on-task-fmri-analysis" title="Permalink to this headline">#</a></h2>
+<p>Task fMRI data can be analyzed in different ways depending on the chosen paradigm and the a priori knowledge.</p>
+<p><strong>Inferential methods:</strong></p>
+<ul class="simple">
+<li><p>require <em>a priori</em> model of brain activation (expected response to some tasks of the paradigm)</p></li>
+<li><p>compare the data to the model,</p></li>
+<li><p>examples: T-test, correlation, generalized linear model (GLM).</p></li>
+</ul>
+<p><strong>Exploratory methods:</strong> (not covered in this course)</p>
+<ul class="simple">
+<li><p>do not require <em>a priori</em> assumption,</p></li>
+<li><p>determination of a model from the data,</p></li>
+<li><p>can be used to validate a model,</p></li>
+<li><p>can be used to detect unpredicted changes,</p></li>
+<li><p>can be used to identify no-interesting components</p></li>
+<li><p>examples: PCA, ICA, classification, bayesian analysis.</p></li>
+</ul>
+</section>
+<section id="statistical-test-analysis-for-block-paradigm">
+<h2>Statistical test analysis for block paradigm<a class="headerlink" href="#statistical-test-analysis-for-block-paradigm" title="Permalink to this headline">#</a></h2>
+<p>We consider the case where the paradigm is known, it is thus possible to search for brain regions having a synchronous activity with one or more cognitive tasks imposed by the paradigm. However, it must be remembered that the signals are extremely noisy and that the variation of the signal induced by the task is very small compared to the noise. It should also be remembered that other factors can impact the fMRI signal (head movement, physiological signals, sleepiness, etc.)</p>
+<p>Consider the following toy example: a patient is placed in the MRI and performs cognitive tasks of two different types that will be called condition A and condition B. We then try to find out which areas of the brain are activated:</p>
+<ul class="simple">
+<li><p>during condition A only,</p></li>
+<li><p>during condition B only,</p></li>
+<li><p>during both conditions,</p></li>
+<li><p>during neither of the two conditions.</p></li>
+</ul>
+<p>Periods of rest between two blocks allows the fMRI signal to return to the baseline.</p>
+<figure class="align-default" id="bloc1">
+<a class="reference internal image-reference" href="_images/bloc1.png"><img alt="_images/bloc1.png" src="_images/bloc1.png" style="height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Example of fMRI signal recorded during a two-condition block paradigm session in a voxel of the brain volume showing an activation for both conditions.</span><a class="headerlink" href="#bloc1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Exercise:</strong> Suppose we want to find the areas of the brain that are more strongly activated during condition A than during condition B.</p>
+<p>For each voxel of the brain, we will conduct a test as follows:</p>
+<ul class="simple">
+<li><p>we consider two populations:</p>
+<ul>
+<li><p>population 1: the signal samples corresponding to the periods when condition A is realized;</p></li>
+<li><p>population 2: the signal samples corresponding to the periods when condition B is realized.</p></li>
+</ul>
+</li>
+<li><p>we want to know if on average the signal is significantly higher during condition A compared to condition B.</p></li>
+</ul>
+<p>To conduct a statistical test, the null hypothesis <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span> must be formulated as the assumption of no difference between the two populations. For the exercise, the alternative hypothesis <span class="math notranslate nohighlight">\(\mathcal{H}_1\)</span> being that the mean of population 1 should be higher than the mean of population 2.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the last two raws, note that a test on variances of the two populations, <span class="math notranslate nohighlight">\(\sigma_1^2\)</span> and <span class="math notranslate nohighlight">\(\sigma_2^2\)</span>, must be conducted to chose the right statistics of test.</p>
+</div>
+</aside>
+<figure class="align-default" id="tab-tests">
+<a class="reference internal image-reference" href="_images/table_tests.pdf"><img alt="_images/table_tests.pdf" src="_images/table_tests.pdf" style="height: 475px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Test on the means of two populations according to the characteristics of the populations.</span><a class="headerlink" href="#tab-tests" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once the test statistic is chosen according to the data and the knowledge of the problem, we have to decide if the test allows to reject or not the null hypothesis (i.e. to decide that the two populations are not identical, i.e. that the considered voxel does not react in the same way to the two conditions of the paradigm). Most of the time we will make the approximation that the noise in the fMRI signal is Gaussian. The theoretical variance of this noise is not known, so we will choose a T-test among the last 3 lines of the table.</p>
+<p>The probability, under <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span>, of obtaining a value <span class="math notranslate nohighlight">\(T\)</span> greater than or equal to the observed value <span class="math notranslate nohighlight">\(T_{obs}\)</span> defines the <em>p-value</em>. The hypothesis <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span> is rejected if the p-value is below a given significance level <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<figure class="align-default" id="pval">
+<a class="reference internal image-reference" href="_images/pval.pdf"><img alt="_images/pval.pdf" src="_images/pval.pdf" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Illustration of p-value calculation, <span class="math notranslate nohighlight">\(p(T|\mathcal{H}_0)\)</span> is the test statistic distribution under the null hypothesis, <span class="math notranslate nohighlight">\(\alpha\)</span> is the significance level to which the p-value is compared.</span><a class="headerlink" href="#pval" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This procedure allows to thresh independantly each voxel of the brain, but, in this context, it is obvious that two adjacent voxels have a high probability of having a similar activity. Moreover, the different preprocessing performed on the data introduces dependency between the neighboring voxels. If <span class="math notranslate nohighlight">\(\alpha\)</span> is the probability of false alarm, i.e. the probability of wrongly rejecting the hypothesis <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span>, then by thresholding independently the <span class="math notranslate nohighlight">\(n\)</span> voxels of the brain we obtain on average, <span class="math notranslate nohighlight">\(\alpha\times n\)</span> false alarms. Now imagine that among all the voxels in the brain, only a small number <span class="math notranslate nohighlight">\(n_1\)</span> react differently to the two conditions A and B of the paradigm. We thus have <span class="math notranslate nohighlight">\(n_1 &lt;&lt; n_0\)</span>. Let us also assume that our test is powerful, i.e. that it is able to reject <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span> for the <span class="math notranslate nohighlight">\(n_1\)</span> voxels that react more strongly to condition B than to condition A. In the end, after thresholding each voxel independently we will have detected :</p>
+<ul class="simple">
+<li><p>the <span class="math notranslate nohighlight">\(n_1\)</span> voxels,</p></li>
+<li><p>the <span class="math notranslate nohighlight">\(n_1\)</span> false alarms.
+It is possible, when <span class="math notranslate nohighlight">\(n\)</span> is very large, that <span class="math notranslate nohighlight">\(\alpha\times n\)</span> is larger than <span class="math notranslate nohighlight">\(n_1\)</span>, so we would have, in total in the detected areas, more false detections than true detections.</p></li>
+</ul>
+<p>The configuration after decinding for each voxel to reject or not the null hypothesis is summarized in the table below.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/tab_test.png"><img alt="_images/tab_test.png" src="_images/tab_test.png" style="height: 200px;" /></a>
+</figure>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The description of the different thresholding strategies used in the literature is not the object of this course, but it is important to remember the problems generated by an individual thresholding of a large number of tests, whatever the application domain.</p>
+</div>
+</aside>
+<p>Thresholding each voxel separately is generally a bad idea, it can be done at first to get an idea of the areas of interest but we understand with the example given previously that it can lead to a bad interpretation. Multiple thresholding strategies are proposed in the literature in order to have a more global control on the detection errors. Instead of thresholding according to the false alarm criterion, criteria such as the FDR (<em>False Discovery Rate</em>) or FWER (<em>Family Wise Error Rate</em>) are preferred.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/FDR_FWER.png"><img alt="_images/FDR_FWER.png" src="_images/FDR_FWER.png" style="height: 200px;" /></a>
+</figure>
+<p>In practice, the FWER control as described in the table is too conservative, i.e. it will not reject the null hypothesis when it is false. What is done is a second level analysis by working not at the level of each voxel, but rather on clusters of voxels whose p-value is sufficiently small, and the FWER criterion is formulated on the maximum of each cluster.</p>
+</section>
+<section id="generalized-linear-model-glm">
+<h2>Generalized Linear Model (GLM)<a class="headerlink" href="#generalized-linear-model-glm" title="Permalink to this headline">#</a></h2>
+<p>In the simple linear model, the fMRI signal can be decomposed into:</p>
+<ul class="simple">
+<li><p>a regressor <span class="math notranslate nohighlight">\(x_1\)</span>, <em>i.e.</em> the expected response to certain stimuli (for example the condition A in previous paradigm),</p></li>
+<li><p>an offset,</p></li>
+<li><p>an unknown centered noise <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Mathematical formulation</p>
+<p><span class="math notranslate nohighlight">\(Y = \beta_{1} .x_{1} + \beta_{2}. \mathbb{1}  + \epsilon\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{1}\)</span> is a unit vector, and <span class="math notranslate nohighlight">\(\beta_1\)</span>, <span class="math notranslate nohighlight">\(\beta_2\)</span> are constants to be estimated.</p>
+</div>
+<figure class="align-default" id="slm">
+<a class="reference internal image-reference" href="_images/SLM.png"><img alt="_images/SLM.png" src="_images/SLM.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Example of simple linear model for fMRI with a bloc paradigm.</span><a class="headerlink" href="#slm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In order to detect different kind of activation in the whole brain volume, several regressors can be defined according to the different conditions in the paradigm, the type of paradigm, etc. This model is called <strong>generalized linear model</strong> and allows to define the fMRI signal as a linear combination of several regressor.</p>
+<div class="tip admonition">
+<p class="admonition-title">Mathematical formulation</p>
+<div class="math notranslate nohighlight">
+\[Y = \sum_{i} \beta_i x_i + \epsilon = X\beta + \epsilon\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_i\)</span> are the regressors chosen according to the paradigm (including the unit vector) and <span class="math notranslate nohighlight">\(\beta_i\)</span> are the unknown parameters to be estimated.</p>
+</div>
+<figure class="align-default" id="glm">
+<a class="reference internal image-reference" href="_images/GLM.png"><img alt="_images/GLM.png" src="_images/GLM.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Matrix model of generalized linear model for fMRI signal.</span><a class="headerlink" href="#glm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Principle:</strong></p>
+<ul class="simple">
+<li><p>The term “generalized” refers to cases where the model contains at least two regressors in addition to the constant regressor.</p></li>
+<li><p>Each condition (event) is represented by at least one regressor.</p></li>
+<li><p>Non-interest effect: may also motivate the definition of additional regressors (e.g. low frequency drift, etc)</p></li>
+</ul>
+<p><strong>The assumptions:</strong></p>
+<ul class="simple">
+<li><p>The shape of the response induced by an event is assumed to be known.</p></li>
+<li><p>Linearity: the effects produced by different events add up.</p></li>
+<li><p>Stationarity: the responses to two events of the same nature are identical at all times</p></li>
+</ul>
+<p><strong>Design matrix:</strong></p>
+<ul class="simple">
+<li><p>Each column represents the BOLD response to an experimental condition (e.g. response to viewing a human face, landscape, etc).</p></li>
+<li><p>the response to an experimental condition may be present with different time lags (delays in the BOLD response to an unknown stimulus).</p></li>
+</ul>
+<p><strong>Estimation of the <span class="math notranslate nohighlight">\(\beta\)</span> parameters:</strong></p>
+<p>Under the assumption that <span class="math notranslate nohighlight">\(\epsilon\)</span> is a white noise (centered and uncorrelated) with the same variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> during the whole fMRI session, the least square error estimation of <span class="math notranslate nohighlight">\(\beta\)</span> can be formulated as:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta } = \min_{\beta} \| Y - X\beta \|_2^2 = \min_{\beta} \| \epsilon \|_2^2\]</div>
+<p>This leads to solve:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d \| Y - X\beta \|_2^2}{d\beta}\left( \hat{\beta} \right) = 0\]</div>
+<p>The solution is:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta} = (X^TX)^{-1}X^TY\]</div>
+<p>This estimator is unbiased <span class="math notranslate nohighlight">\(\mathbb{E}[\hat{\beta}] = \beta\)</span> and the variance of the estimator is <span class="math notranslate nohighlight">\(Var[\hat{\beta}] = (X^TX)^{-1}\sigma^2\)</span>.</p>
+<p>When <span class="math notranslate nohighlight">\(\sigma^2\)</span> is unknown, an estimator of this variance must be used:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{\sigma}^2 = \frac{1}{n-p}\|Y - X\hat{\beta} \|^2_2\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> biaised,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\sigma}^2 = \frac{1}{n-p-1}\|Y - X\hat{\beta} \|^2_2\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> unbiased.</p></li>
+</ul>
+<p><strong>To deepen your understanding of the GLM:</strong>
+<a class="reference external" href="https://projects.iq.harvard.edu/files/imagenesmedicas/files/polinekd.pdf"><em>The general linear model and fMRI: Does love last forever?</em>, Jean-Baptiste Poline and Matthew Brett, NeuroImage 62 (2012) 871–880.</a></p>
+<p><strong>Contrast and test:</strong></p>
+<p>A contrast is a defined as a difference between two or more experimental conditions, it is a generalization of the T-test inference since more than two conditions can be combined.
+the contrast is modelled by a linear combination <span class="math notranslate nohighlight">\(c = [c_1, ..., c_p]^T\)</span>  of parameters: <span class="math notranslate nohighlight">\(c^T\beta\)</span>.</p>
+<p>In practice, <span class="math notranslate nohighlight">\(\beta\)</span> is unknown, its estimation <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> is used, so the contrast is <span class="math notranslate nohighlight">\(c^T\hat{\beta}\)</span>. Generally coefficients of vector <span class="math notranslate nohighlight">\(c\)</span> are set to:</p>
+<ul class="simple">
+<li><p>0 for regressor(s) we don’t want to study,</p></li>
+<li><p>1 for regressor(s) that should activate the region of interest in the brain,</p></li>
+<li><p>-1 for regressor(s) that are not expected to significantly influence activation.</p></li>
+</ul>
+<p>Under the null hypothesis, contrast is equal to 0 : <span class="math notranslate nohighlight">\(c^T\beta =  0\)</span> (<span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The objective is to build a map of the brain indicating for each voxel if the contrast is significantly different from 0 to detect the brain regions activating for the conditions selected with the c vector.</p>
+</div>
+<p>For deciding if the contrast is significant, the following decision statistic is formed:</p>
+<div class="math notranslate nohighlight">
+\[T = \frac{c^T\hat{\beta}}{\sqrt{\vphantom{P^T}\hat{\sigma}^2 c^T(X^TX)^{-1}c}}\]</div>
+<p>Under <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span> the distribution of <span class="math notranslate nohighlight">\(T\)</span> is a Student law of <span class="math notranslate nohighlight">\((n-p-1)\)</span> degrees of freedom in the unbiased case (<span class="math notranslate nohighlight">\(n-p\)</span> in the biased case).</p>
+<p>The rest of the procedure consists in thresholding the test on the contrast values obtained for all the voxels of the brain. For this we need :</p>
+<ul class="simple">
+<li><p>calculate the p-value for each test</p></li>
+<li><p>perform a thresholding of these p-values according to the chosen procedure (<span class="math notranslate nohighlight">\(p_{FA}\)</span>, FDR, FWER, etc).</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to fMRI data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="FC.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functional connectivity: definition, analysis and utility</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Céline Meillier<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
