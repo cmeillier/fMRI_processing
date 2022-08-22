@@ -346,8 +346,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#least-squares-estimation">
-     Least squares estimation
+    <a class="reference internal nav-link" href="#least-squares-estimation-and-contrast-map">
+     Least squares estimation and contrast map
     </a>
    </li>
   </ul>
@@ -409,8 +409,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#least-squares-estimation">
-     Least squares estimation
+    <a class="reference internal nav-link" href="#least-squares-estimation-and-contrast-map">
+     Least squares estimation and contrast map
     </a>
    </li>
   </ul>
@@ -512,8 +512,8 @@ end
 <li><p>Construct the matrix X by putting in the first column the vector <span class="math notranslate nohighlight">\(x_1\)</span>, in the second column the vector <span class="math notranslate nohighlight">\(x_2\)</span> and in the third column, the vector <span class="math notranslate nohighlight">\(x_3\)</span>.</p></li>
 </ol>
 </section>
-<section id="least-squares-estimation">
-<h3>Least squares estimation<a class="headerlink" href="#least-squares-estimation" title="Permalink to this headline">#</a></h3>
+<section id="least-squares-estimation-and-contrast-map">
+<h3>Least squares estimation and contrast map<a class="headerlink" href="#least-squares-estimation-and-contrast-map" title="Permalink to this headline">#</a></h3>
 <p>The least squares estimator of the vector <span class="math notranslate nohighlight">\(\beta\)</span> containing the 3 regression coefficients is obtained by the equation :</p>
 <div class="math notranslate nohighlight">
 \[\hat{\beta} = (X^TX)^{-1}X^Ty\]</div>
@@ -529,6 +529,29 @@ end
 <li><p>Calculate the matrix <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>.</p></li>
 <li><p>Compare the size of the matrix <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> to the size of the 3D brain mask.</p></li>
 <li><p>Conclude on how to visualize in 3D the values of <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> for each regressor.</p></li>
+</ol>
+<p>We are interested in the contrast <span class="math notranslate nohighlight">\(\beta_2 - \beta_3\)</span> where <span class="math notranslate nohighlight">\(\beta_2\)</span> is the regression coefficient related to the paradigm and  <span class="math notranslate nohighlight">\(\beta_3\)</span> is the regression coefficient related to the mean value of the timecourses.</p>
+<ol class="simple">
+<li><p>Create the vector <span class="math notranslate nohighlight">\(\tt{c}\)</span> of contrast.</p></li>
+</ol>
+<p>The decision statistic is formed:</p>
+<div class="math notranslate nohighlight">
+\[T = \frac{c^T\hat{\beta}}{\sqrt{\vphantom{P^T}\hat{\sigma}^2 c^T(X^TX)^{-1}c}}\]</div>
+<p>with <span class="math notranslate nohighlight">\(\hat{\sigma}^2 = \frac{1}{n-p-1}\|Y - X\hat{\beta} \|^2_2\)</span></p>
+<p>In the matrix case, <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(\hat{\sigma}^2\)</span> are vectors of size <span class="math notranslate nohighlight">\(nbVox \times 1\)</span>.</p>
+<p>The density probability function <span class="math notranslate nohighlight">\(p(T|\mathcal{H}_0)\)</span> of the statistics  <span class="math notranslate nohighlight">\(T\)</span> under <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span> is the Student’s law at <span class="math notranslate nohighlight">\((N4 - p -2)\)</span> degrees of freedom. The distribution function of the Student’s law at <span class="math notranslate nohighlight">\((N4 - p -2)\)</span> degree of freedom is obtained in Matlab with the following code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tcdf(T, N4 - p -2)
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Calculate the vector <span class="math notranslate nohighlight">\(\hat{\sigma}^2\)</span>.</p></li>
+<li><p>Calculate the vector <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Calculate the vector of p-values.</p></li>
+<li><p>Visualise the p-values in 3D using the mask and code of the question 3.</p></li>
+<li><p>The p-values can be thresholded for a significance level <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span> to visualise the voxels for which the contrast is most significant.</p></li>
+<li><p>Overlay the thresholded map on one of the acquisitions <span class="math notranslate nohighlight">\(I(:,:,:,i)\)</span> to visualise the areas of the brain activated by hearing.</p></li>
+<li><p>What are the areas identified using the previous contrast ?</p></li>
+<li><p>Do T-test analysis and correlation analysis give the same result? If you have time, you can implement either method to compare the results.</p></li>
 </ol>
 </section>
 </section>

@@ -93,7 +93,7 @@ The last regressor is related to the presence of a hypersignal in the ventricles
 5. Construct the matrix X by putting in the first column the vector $x_1$, in the second column the vector $x_2$ and in the third column, the vector $x_3$.
 
 
-### Least squares estimation
+### Least squares estimation and contrast map
 
 The least squares estimator of the vector $\beta$ containing the 3 regression coefficients is obtained by the equation :
 ```{math}
@@ -111,4 +111,34 @@ This model can be represented graphically:
 
 1. Calculate the matrix $\hat{\beta}$.
 2. Compare the size of the matrix $\hat{\beta}$ to the size of the 3D brain mask.
-3. Conclude on how to visualize in 3D the values of $\hat{\beta}$ for each regressor. 
+3. Conclude on how to visualize in 3D the values of $\hat{\beta}$ for each regressor.
+
+
+We are interested in the contrast $\beta_2 - \beta_3$ where $\beta_2$ is the regression coefficient related to the paradigm and  $\beta_3$ is the regression coefficient related to the mean value of the timecourses.
+
+
+4. Create the vector $\tt{c}$ of contrast.
+
+The decision statistic is formed:
+```{math}
+T = \frac{c^T\hat{\beta}}{\sqrt{\vphantom{P^T}\hat{\sigma}^2 c^T(X^TX)^{-1}c}}
+```
+
+with $\hat{\sigma}^2 = \frac{1}{n-p-1}\|Y - X\hat{\beta} \|^2_2$
+
+In the matrix case, $T$ and $\hat{\sigma}^2$ are vectors of size $nbVox \times 1$.
+
+The density probability function $p(T|\mathcal{H}_0)$ of the statistics  $T$ under $\mathcal{H}_0$ is the Student's law at $(N4 - p -2)$ degrees of freedom. The distribution function of the Student's law at $(N4 - p -2)$ degree of freedom is obtained in Matlab with the following code:
+
+	tcdf(T, N4 - p -2)
+
+5. Calculate the vector $\hat{\sigma}^2$.
+6. Calculate the vector $T$.
+7. Calculate the vector of p-values.
+8. Visualise the p-values in 3D using the mask and code of the question 3.
+9. The p-values can be thresholded for a significance level $\alpha = 0.01$ to visualise the voxels for which the contrast is most significant.
+10. Overlay the thresholded map on one of the acquisitions $I(:,:,:,i)$ to visualise the areas of the brain activated by hearing.
+11. What are the areas identified using the previous contrast ?
+12. Do T-test analysis and correlation analysis give the same result? If you have time, you can implement either method to compare the results.
+
+
