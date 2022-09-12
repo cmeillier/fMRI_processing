@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Functional connectivity: definition, analysis and utility" href="FC.html" />
+    <link rel="next" title="Functional connectivity: definition and analysis" href="FC.html" />
     <link rel="prev" title="Task fMRI analysis" href="GLM.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -128,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="FC.html">
-   Functional connectivity: definition, analysis and utility
+   Functional connectivity: definition and analysis
   </a>
  </li>
 </ul>
@@ -428,6 +428,15 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="lab-session-task-fmri-analysis">
 <h1>Lab session : task fMRI analysis<a class="headerlink" href="#lab-session-task-fmri-analysis" title="Permalink to this headline">#</a></h1>
 <p>In this tutorial we will implement the notions of general linear model, contrast and statistical map seen in class. For this we will use an fMRI acquisition performed by Geraint Rees under the direction of Karl Friston (Functional Imaging Laboratory). The subject of their study was to explore the possibilities offered by functional MRI imaging in its infancy. The data is available to the academic world at  <a class="reference external" href="http://www.fil.ion.ucl.ac.uk/spm/data/auditory/">SPM website</a>. Le jeu de données fourni a été acquis avec un IRM 2T Siemens. The dataset provided was acquired with a Siemens 2T MRI. Each (3D) acquisition is a <span class="math notranslate nohighlight">\(64\times 64\times 64\)</span> matrix with voxels of size  <span class="math notranslate nohighlight">\(3 \times 3 \times 3\)</span> mm<span class="math notranslate nohighlight">\(^3\)</span>. Each 3D acquisition actually takes exactly 6.05s (for the 64 slices) then the acquisitions were finally performed with a repetition time TR = 7s. In the studied dataset, there are 96 acquisitions performed on a subject with a block paradigm.  Each block is composed of 6 acquisitions of silence and 6 acquisitions during which the patient hears bisyllabic words. This gives a paradigm of 8 blocks of 84s.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The subject is written in Matlab, but if you prefer to code in Python, it is also possible. For loading the .mat data, use the following instruction : \
+from <a class="reference external" href="http://scipy.io">scipy.io</a> import loadmat.
+data = loadmat(‘filename.mat’)</p>
+</div>
+</aside>
 <p>In this tutorial, the data was pre-processed, the first block of 12 acquisitions was removed and the images were trimmed on the edges (of the 3D cubes).</p>
 <p><strong>The objective of this tutorial is to study the brain areas activated by the subject’s hearing of words in MRI.</strong></p>
 <hr class="docutils" />
@@ -594,7 +603,7 @@ end
     <a class='right-next' id="next-link" href="FC.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Functional connectivity: definition, analysis and utility</p>
+        <p class="prev-next-title">Functional connectivity: definition and analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
