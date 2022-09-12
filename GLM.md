@@ -83,7 +83,7 @@ Illustration of p-value calculation, $p(T|\mathcal{H}_0)$ is the test statistic 
 
 This procedure allows to thresh independantly each voxel of the brain, but, in this context, it is obvious that two adjacent voxels have a high probability of having a similar activity. Moreover, the different preprocessing performed on the data introduces dependency between the neighboring voxels. If $\alpha$ is the probability of false alarm, i.e. the probability of wrongly rejecting the hypothesis $\mathcal{H}_0$, then by thresholding independently the $n$ voxels of the brain we obtain on average, $\alpha\times n$ false alarms. Now imagine that among all the voxels in the brain, only a small number $n_1$ react differently to the two conditions A and B of the paradigm. We thus have $n_1 << n_0$. Let us also assume that our test is powerful, i.e. that it is able to reject $\mathcal{H}_0$ for the $n_1$ voxels that react more strongly to condition B than to condition A. In the end, after thresholding each voxel independently we will have detected :
 * the $n_1$ voxels,
-* the $n_1$ false alarms.
+* the $a = \alpha\times n$ false alarms.
 It is possible, when $n$ is very large, that $\alpha\times n$ is larger than $n_1$, so we would have, in total in the detected areas, more false detections than true detections.
 
 The configuration after decinding for each voxel to reject or not the null hypothesis is summarized in the table below.
