@@ -128,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="FC.html">
-   Functional connectivity: definition, analysis and utility
+   Functional connectivity: definition and analysis
   </a>
  </li>
 </ul>
@@ -442,7 +442,7 @@ title="Print to PDF"
 <p>This procedure allows to thresh independantly each voxel of the brain, but, in this context, it is obvious that two adjacent voxels have a high probability of having a similar activity. Moreover, the different preprocessing performed on the data introduces dependency between the neighboring voxels. If <span class="math notranslate nohighlight">\(\alpha\)</span> is the probability of false alarm, i.e. the probability of wrongly rejecting the hypothesis <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span>, then by thresholding independently the <span class="math notranslate nohighlight">\(n\)</span> voxels of the brain we obtain on average, <span class="math notranslate nohighlight">\(\alpha\times n\)</span> false alarms. Now imagine that among all the voxels in the brain, only a small number <span class="math notranslate nohighlight">\(n_1\)</span> react differently to the two conditions A and B of the paradigm. We thus have <span class="math notranslate nohighlight">\(n_1 &lt;&lt; n_0\)</span>. Let us also assume that our test is powerful, i.e. that it is able to reject <span class="math notranslate nohighlight">\(\mathcal{H}_0\)</span> for the <span class="math notranslate nohighlight">\(n_1\)</span> voxels that react more strongly to condition B than to condition A. In the end, after thresholding each voxel independently we will have detected :</p>
 <ul class="simple">
 <li><p>the <span class="math notranslate nohighlight">\(n_1\)</span> voxels,</p></li>
-<li><p>the <span class="math notranslate nohighlight">\(n_1\)</span> false alarms.
+<li><p>the <span class="math notranslate nohighlight">\(a = \alpha\times n\)</span> false alarms.
 It is possible, when <span class="math notranslate nohighlight">\(n\)</span> is very large, that <span class="math notranslate nohighlight">\(\alpha\times n\)</span> is larger than <span class="math notranslate nohighlight">\(n_1\)</span>, so we would have, in total in the detected areas, more false detections than true detections.</p></li>
 </ul>
 <p>The configuration after decinding for each voxel to reject or not the null hypothesis is summarized in the table below.</p>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Functional connectivity: definition, analysis and utility &#8212; fMRI data analysis, connectivity study</title>
+    <title>Functional connectivity: definition and analysis &#8212; fMRI data analysis, connectivity study</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -127,7 +127,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Functional connectivity: definition, analysis and utility
+   Functional connectivity: definition and analysis
   </a>
  </li>
 </ul>
@@ -285,23 +285,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defintion-s">
+   Defintion(s)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identification-of-functional-networks-and-their-brain-activity-during-rest">
+   Identification of functional networks and their brain activity during rest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation-analysis">
+   Correlation analysis
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Functional connectivity: definition, analysis and utility</h1>
+                <h1>Functional connectivity: definition and analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defintion-s">
+   Defintion(s)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identification-of-functional-networks-and-their-brain-activity-during-rest">
+   Identification of functional networks and their brain activity during rest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation-analysis">
+   Correlation analysis
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -309,14 +366,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="functional-connectivity-definition-analysis-and-utility">
-<h1>Functional connectivity: definition, analysis and utility<a class="headerlink" href="#functional-connectivity-definition-analysis-and-utility" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="functional-connectivity-definition-and-analysis">
+<h1>Functional connectivity: definition and analysis<a class="headerlink" href="#functional-connectivity-definition-and-analysis" title="Permalink to this headline">#</a></h1>
+<p>We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI and does not allow to analyze connectivity between different brain regions. We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI since it is impossible to define regressors in the absence of a paradigm and does not allow the analysis of connectivity at the scale of brain regions of interest to the neurologist/psychiatrist. The focus in this chapter is on the analysis of functional connectivity at the scale of anatomical regions or functional networks in task or resting state fMRI, and for group or single subject analyses.</p>
+<section id="defintion-s">
+<h2>Defintion(s)<a class="headerlink" href="#defintion-s" title="Permalink to this headline">#</a></h2>
 <p>Functional connectivity (FC) is defined as the temporal similarity between activity of two (or more) different areas of the brain, <em>i.e.</em> theses regions co-activate to respond to a stimulus, to perform a cognitive task or to perform a spontaneous brain function. Regions that have a similar activity consistently over time form what is called a <strong>functional network</strong>.</p>
 <p>In order to measure the similarity between the time signatures of two regions, different criteria can be used:</p>
 <ul class="simple">
 <li><p>the correlation between two signals which is the most commonly used measure in the literature,</p></li>
 <li><p>the mutual information</p></li>
 <li><p>partial correlation</p></li>
+<li><p>coherence (in the frequency domain)</p></li>
 <li><p>etc.</p></li>
 </ul>
 <div class="tip admonition">
@@ -328,7 +389,32 @@ Correlation coefficient of regions <span class="math notranslate nohighlight">\(
 <span class="eqno">(1)<a class="headerlink" href="#equation-corrcoef" title="Permalink to this equation">#</a></span>\[r_{i,j} = \frac{1}{N}\sum_{n = 1}^{N} \frac{\left(x_i(n) - \bar{x}_i\right) \left(x_j(n) - \bar{x}_j\right)  }{\sigma_i \sigma_j}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of time samples in fMRI acquisition.</p>
 </div>
-<p>In practice, Pearson correlation is the most widely used metric to quantify functional connectivity. Its main drawback is that it measures the presence of a linear relationship between the two signals. Spearman correlation or mutual information are able to capture non linear relationship but have their own limitations, in particular for further statistical analysis of connectivity. For example, the mutual information needs to be estimated, making assumptions on the distribution of the values taken by the signals. The distribution can be estimated by the histogram of the data which can be affected by noise  \ref{}</p>
+<p>Two signals are strongly correlated in the Pearson sense if :</p>
+<ul class="simple">
+<li><p>they move in the same direction</p></li>
+<li><p>they evolve in a synchronous way
+The correlation is equal to 1 if and only if <span class="math notranslate nohighlight">\(x_i\)</span> can be written proportionally to <span class="math notranslate nohighlight">\(x_j\)</span>, i.e. if <span class="math notranslate nohighlight">\(x_i = \alpha x_j + \beta\)</span> with <span class="math notranslate nohighlight">\(alpha\)</span> and <span class="math notranslate nohighlight">\(beta\)</span> constants.</p></li>
+</ul>
+<p>In practice, Pearson correlation is the most widely used metric to quantify functional connectivity. Its main drawback is that it measures the presence of a linear relationship between the two signals. Spearman correlation or mutual information are able to capture non linear relationship but have their own limitations, in particular for further statistical analysis of connectivity. For example, the mutual information needs to be estimated, making assumptions on the distribution of the values taken by the signals. The distribution can be estimated by the histogram of the data which can be affected by noise (due to acquisition, preprocessings, etc.).</p>
+</section>
+<section id="identification-of-functional-networks-and-their-brain-activity-during-rest">
+<h2>Identification of functional networks and their brain activity during rest<a class="headerlink" href="#identification-of-functional-networks-and-their-brain-activity-during-rest" title="Permalink to this headline">#</a></h2>
+<p>For task fMRI, GLM analysis is widely used, but for rest</p>
+<p>In some studies, certain anatomical regions are of interest for the pathology concerned. The neuroscientists then use an atlas (i.e. an anatomical segmentation of the brain) to extract timecourses of the voxels belonging to these regions of interest (ROI). A mean signal is then computed for each ROI and the connectivity can be measured by correlation, mutual information, etc. Since the registration of fMRI data to the atlas (or vice versa) is never perfect and the spatial resolution of voxels in fMRI is very coarse, more robust strategies than simple averaging can be used to extract the time course for each ROI. Since the registration of fMRI data to the atlas (or vice versa) is never perfect and the spatial resolution of voxels in fMRI is very coarse, more robust strategies than simple averaging can be used to extract the timecourse for each ROI. From a signal and image processing point of view, signal unmixing methods are adapted to refine the estimation of the timecourse, even if most of the time, simplicity prevails over accuracy. Functional networks are then created by gathering ROIs with high connectivity.</p>
+<figure class="align-default" id="atlas">
+<a class="reference internal image-reference" href="_images/atlas.png"><img alt="_images/atlas.png" src="_images/atlas.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of the Allen Human Brain atlas in sagital plane (left) and coronal plane (right), with two anatomical regions highlighted: hippocampal formation (orange) and amygdala (purple). Screenshot of Brain Explorer 2 application delivered by the Allen Institute for Brain Science.</span><a class="headerlink" href="#atlas" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When one does not wish to work from predefined anatomical regions, functional networks can be directly extracted along with their temporal course via blind source separation methods. The most commonly used in fMRI is the independent component analysis (ICA). The size of the functional networks then depends on the number of components desired. With a low number of components, we obtain spatially extended networks, which then prevents a fine analysis of the connectivity, in particular in the case of the search for change of the functional connectivity due to a pathology. Conversely, with a very large number of independent components, we will estimate small networks, even functional sub-networks, but also many components that are in fact only noise. It then requires the help of a neuroscientist to exclude these nuisance components.
+These blind source separation methods allow to obtain for each spatial source its time course. As for the ROI-based methods, a connectivity measure is then computed and the networks or sub-networks can be associated to form larger ones.</p>
+<p>ICA-based methods perform well in group analyses because they take advantage of the redundancy within each group to produce the best possible independent components. On the other hand, at the single-subject level, these methods produce very noisy components, making analysis at the individual level impossible.</p>
+</section>
+<section id="correlation-analysis">
+<h2>Correlation analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://moodle.unistra.fr/mod/quiz/view.php?id=627410">Activity : Analysing correlation matrices</a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
