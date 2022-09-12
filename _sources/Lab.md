@@ -4,8 +4,8 @@ In this tutorial we will implement the notions of general linear model, contrast
 
 ````{margin}
 ```{note}
-The subject is written in Matlab, but if you prefer to code in Python, it is also possible. For loading the .mat data, use the following instruction : \\
-from scipy.io import loadmat.
+The subject is written in Matlab, but if you prefer to code in Python, it is also possible. For loading the .mat data, use the following instruction :    
+from scipy.io import loadmat
 data = loadmat('filename.mat')
 ```
 ````
