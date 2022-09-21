@@ -5,6 +5,41 @@
 ---
 ### Generalities on task fMRI analysis.
 
+**fMRI paradigm for driving the cerebral activity**
+
+In order to study one or more particular brain functions, the patient will be subjected in the MRI to specific cognitive tasks via an experimental paradigm specifically designed to stimulate the areas concerned. A paradigm consists of a temporal description of the cognitive tasks: time of appearance, duration, order during the examination.
+
+There are three main types of experimental paradigms in fMRI:
+* the event-driven paradigm, which consists of short tasks (clicking on a mouse, saying a word, solving an equation),
+* the block paradigm, where the blocks consist of either a repetition of short events or a long event (watching a video, listening to music),
+* and finally the resting state where the patient remains without doing any cognitive task.
+
+For the first two paradigms we will speak of task fMRI and for the last one of resting fMRI.
+
+```{figure} /images/dessins.png
+---
+height: 300px
+name: hémo
+---
+Example of paradigms with two conditions in red and blue: block paradigm (a), a slow paradigm where the events are spaced in time (b), fast paradigm where the events follow each other at regular intervals (c), fast random paradigm where the events appear at random times (d).
+```
+
+
+When the brain is subjected to a very brief stimulus, in the BOLD signal there is a delay before the response which also has a certain duration. This can be modelled in signal processing as the impulse response of the BOLD signal, which is called the hemodynamic response. This hemodynamic response models the local increase in blood flow to support the oxygen requirement of active neurons. We have a continuous model of this impulse response, but in practice, since the temporal acquisitions are sampled every second or every two seconds, we do not have access to the entire hemodynamic response, only the red points on the following image:
+```{figure} /images/hemo.png
+---
+height: 300px
+name: hémo
+---
+Continuous model of hemodynamic response and its sampling every 2 seconds.
+```
+
+With the block paradigm, the hemodynamic response to all successive stimuli within a block accumulates and gives high amplitude signal. The patient is only at rest between two blocks in order to let the BOLD signal fall back to its baseline. Note that, the duration of the blocks does not interfere with the statistical analysis of the data, so the duration of the blocks can be adapted to the type of cognitive task to be performed.
+
+The block paradigm seems ideal for analysing fMRI signals, but it has a cognitive limitation: if the patient does the same task over a long period of time, he or she gets used to and there is a risk of drowsiness. Another problem is that some cerebral functions cannot be handled by the block paradigm : this is the case of all short dynamic phenomena in the brain.
+
+The flexibility and the randomness of event paradigm allow to eliminate the predictability of block design. It also removes the anticipatory effect thanks to the randomness, and the different conditions are sorted after the scan session, during the analysis.
+
 Task fMRI data can be analyzed in different ways depending on the chosen paradigm and the a priori knowledge.
 
 
@@ -22,7 +57,10 @@ Task fMRI data can be analyzed in different ways depending on the chosen paradig
 * examples: PCA, ICA, classification, bayesian analysis.
 
 
-### Statistical test analysis for block paradigm
+
+
+
+### Statistical test analysis for task fMRI
 
 
 We consider the case where the paradigm is known, it is thus possible to search for brain regions having a synchronous activity with one or more cognitive tasks imposed by the paradigm. However, it must be remembered that the signals are extremely noisy and that the variation of the signal induced by the task is very small compared to the noise. It should also be remembered that other factors can impact the fMRI signal (head movement, physiological signals, sleepiness, etc.)
@@ -45,7 +83,7 @@ name: bloc1
 Example of fMRI signal recorded during a two-condition block paradigm session in a voxel of the brain volume showing an activation for both conditions.
 ```
 
-**Exercise:** Suppose we want to find the areas of the brain that are more strongly activated during condition A than during condition B.
+Suppose we want to find the areas of the brain that are more strongly activated during condition A than during condition B.
 
 For each voxel of the brain, we will conduct a test as follows:
 * we consider two populations:
@@ -53,11 +91,11 @@ For each voxel of the brain, we will conduct a test as follows:
 	*  population 2: the signal samples corresponding to the periods when condition B is realized.
 * we want to know if on average the signal is significantly higher during condition A compared to condition B.
 
-To conduct a statistical test, the null hypothesis $\mathcal{H}_0$ must be formulated as the assumption of no difference between the two populations. For the exercise, the alternative hypothesis $\mathcal{H}_1$ being that the mean of population 1 should be higher than the mean of population 2.
+To conduct a statistical test, the null hypothesis $\mathcal{H}_0$ must be formulated as the assumption of no difference between the two populations. In this case, we assume that the alternative hypothesis $\mathcal{H}_1$ is such that the mean of population 1 should be higher than the mean of population 2. We will therefore conduct a right-tailed test.
 
 ````{margin}
 ```{note}
-For the last two raws, note that a test on variances of the two populations, $\sigma_1^2$ and $\sigma_2^2$, must be conducted to chose the right statistics of test.
+For the last two raws, note that a test on variances of the two populations, $\sigma_1^2$ and $\sigma_2^2$, must be conducted to chose the correct statistics of test.
 ```
 ````
 ```{figure} /images/table_tests.pdf
@@ -83,7 +121,7 @@ Illustration of p-value calculation, $p(T|\mathcal{H}_0)$ is the test statistic 
 
 This procedure allows to thresh independantly each voxel of the brain, but, in this context, it is obvious that two adjacent voxels have a high probability of having a similar activity. Moreover, the different preprocessing performed on the data introduces dependency between the neighboring voxels. If $\alpha$ is the probability of false alarm, i.e. the probability of wrongly rejecting the hypothesis $\mathcal{H}_0$, then by thresholding independently the $n$ voxels of the brain we obtain on average, $\alpha\times n$ false alarms. Now imagine that among all the voxels in the brain, only a small number $n_1$ react differently to the two conditions A and B of the paradigm. We thus have $n_1 << n_0$. Let us also assume that our test is powerful, i.e. that it is able to reject $\mathcal{H}_0$ for the $n_1$ voxels that react more strongly to condition B than to condition A. In the end, after thresholding each voxel independently we will have detected :
 * the $n_1$ voxels,
-* the $n_1$ false alarms.
+* the $a = \alpha\times n$ false alarms.
 It is possible, when $n$ is very large, that $\alpha\times n$ is larger than $n_1$, so we would have, in total in the detected areas, more false detections than true detections.
 
 The configuration after decinding for each voxel to reject or not the null hypothesis is summarized in the table below.

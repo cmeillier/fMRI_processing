@@ -2,6 +2,14 @@
 
 In this tutorial we will implement the notions of general linear model, contrast and statistical map seen in class. For this we will use an fMRI acquisition performed by Geraint Rees under the direction of Karl Friston (Functional Imaging Laboratory). The subject of their study was to explore the possibilities offered by functional MRI imaging in its infancy. The data is available to the academic world at  [SPM website](http://www.fil.ion.ucl.ac.uk/spm/data/auditory/). Le jeu de données fourni a été acquis avec un IRM 2T Siemens. The dataset provided was acquired with a Siemens 2T MRI. Each (3D) acquisition is a $64\times 64\times 64$ matrix with voxels of size  $3 \times 3 \times 3$ mm$^3$. Each 3D acquisition actually takes exactly 6.05s (for the 64 slices) then the acquisitions were finally performed with a repetition time TR = 7s. In the studied dataset, there are 96 acquisitions performed on a subject with a block paradigm.  Each block is composed of 6 acquisitions of silence and 6 acquisitions during which the patient hears bisyllabic words. This gives a paradigm of 8 blocks of 84s.
 
+````{margin}
+```{note}
+The subject is written in Matlab, but if you prefer to code in Python, it is also possible. For loading the .mat data, use the following instruction :    
+from scipy.io import loadmat
+data = loadmat('filename.mat')
+```
+````
+
 In this tutorial, the data was pre-processed, the first block of 12 acquisitions was removed and the images were trimmed on the edges (of the 3D cubes).
 
 **The objective of this tutorial is to study the brain areas activated by the subject's hearing of words in MRI.**

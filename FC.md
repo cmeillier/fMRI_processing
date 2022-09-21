@@ -28,7 +28,7 @@ where $N$ is the number of time samples in fMRI acquisition.
 Two signals are strongly correlated in the Pearson sense if :
 * they move in the same direction
 * they evolve in a synchronous way
-The correlation is equal to 1 if and only if $x_i$ can be written proportionally to $x_j$, i.e. if $x_i = \alpha x_j + \beta$ with $alpha$ and $beta$ constants.
+The correlation is equal to 1 if and only if $x_i$ can be written proportionally to $x_j$, i.e. if $x_i = \alpha x_j + \beta$ with $\alpha$ and $\beta$ constants.
 
 
 In practice, Pearson correlation is the most widely used metric to quantify functional connectivity. Its main drawback is that it measures the presence of a linear relationship between the two signals. Spearman correlation or mutual information are able to capture non linear relationship but have their own limitations, in particular for further statistical analysis of connectivity. For example, the mutual information needs to be estimated, making assumptions on the distribution of the values taken by the signals. The distribution can be estimated by the histogram of the data which can be affected by noise (due to acquisition, preprocessings, etc.).
@@ -60,7 +60,7 @@ Once the signals of the networks or ROIs are extracted, we can implement a conne
 * identify functional networks or hidden structures in the correlation matrix revealing the functional activity of the patient,
 * detect differences in connectivity induced by a pathology by comparing a group of patient to a healthy control group.
 
-To find functional networks through the correlation matrix, we can threshold it to keep only the significantly correlated regions and identify structures in this thresholded matrix. Or one can rearrange the rows and columns of the correlation matrix in such a way as to bring the highly correlated regions closer together and form blocks around the diagonal of the matrix. It is then easier to identify the different networks by isolating the blocks in the diagonal of the matrix as illustrated on {numref}`comp_corr`
+To find functional networks through the correlation matrix, we can threshold it to keep only the significantly correlated regions and identify structures in this thresholded matrix. Or the rows and columns of the correlation matrix can be rearranged in such a way as to bring the highly correlated regions closer together and form blocks around the diagonal of the matrix. It is then easier to identify the different networks by isolating the blocks in the diagonal of the matrix as illustrated on {numref}`comp_corr`.
 
 ```{figure} /images/comp_corr.png
 ---
