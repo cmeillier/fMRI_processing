@@ -393,7 +393,7 @@ Correlation coefficient of regions <span class="math notranslate nohighlight">\(
 <ul class="simple">
 <li><p>they move in the same direction</p></li>
 <li><p>they evolve in a synchronous way
-The correlation is equal to 1 if and only if <span class="math notranslate nohighlight">\(x_i\)</span> can be written proportionally to <span class="math notranslate nohighlight">\(x_j\)</span>, i.e. if <span class="math notranslate nohighlight">\(x_i = \alpha x_j + \beta\)</span> with <span class="math notranslate nohighlight">\(alpha\)</span> and <span class="math notranslate nohighlight">\(beta\)</span> constants.</p></li>
+The correlation is equal to 1 if and only if <span class="math notranslate nohighlight">\(x_i\)</span> can be written proportionally to <span class="math notranslate nohighlight">\(x_j\)</span>, i.e. if <span class="math notranslate nohighlight">\(x_i = \alpha x_j + \beta\)</span> with <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> constants.</p></li>
 </ul>
 <p>In practice, Pearson correlation is the most widely used metric to quantify functional connectivity. Its main drawback is that it measures the presence of a linear relationship between the two signals. Spearman correlation or mutual information are able to capture non linear relationship but have their own limitations, in particular for further statistical analysis of connectivity. For example, the mutual information needs to be estimated, making assumptions on the distribution of the values taken by the signals. The distribution can be estimated by the histogram of the data which can be affected by noise (due to acquisition, preprocessings, etc.).</p>
 </section>
@@ -418,7 +418,7 @@ These blind source separation methods allow to obtain for each spatial source it
 <li><p>identify functional networks or hidden structures in the correlation matrix revealing the functional activity of the patient,</p></li>
 <li><p>detect differences in connectivity induced by a pathology by comparing a group of patient to a healthy control group.</p></li>
 </ul>
-<p>To find functional networks through the correlation matrix, we can threshold it to keep only the significantly correlated regions and identify structures in this thresholded matrix. Or one can rearrange the rows and columns of the correlation matrix in such a way as to bring the highly correlated regions closer together and form blocks around the diagonal of the matrix. It is then easier to identify the different networks by isolating the blocks in the diagonal of the matrix as illustrated on <a class="reference internal" href="#comp-corr"><span class="std std-numref">Fig. 11</span></a></p>
+<p>To find functional networks through the correlation matrix, we can threshold it to keep only the significantly correlated regions and identify structures in this thresholded matrix. Or the rows and columns of the correlation matrix can be rearranged in such a way as to bring the highly correlated regions closer together and form blocks around the diagonal of the matrix. It is then easier to identify the different networks by isolating the blocks in the diagonal of the matrix as illustrated on <a class="reference internal" href="#comp-corr"><span class="std std-numref">Fig. 11</span></a>.</p>
 <figure class="align-default" id="comp-corr">
 <a class="reference internal image-reference" href="_images/comp_corr.png"><img alt="_images/comp_corr.png" src="_images/comp_corr.png" style="height: 350px;" /></a>
 <figcaption>
