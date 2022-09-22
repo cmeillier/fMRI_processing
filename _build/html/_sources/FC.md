@@ -70,6 +70,18 @@ name: comp_corr
 Same correlation matrix with rows and columns unsorted (left) and sorted by similarity (right).
 ```
 
+While correlation matrices are widely used tools for representing and analyzing functional connectivity, other mathematical models can be used to extract and analyze functional networks. Graphs are particularly well suited, as they can be used to model connectivity at different levels: between ROIs ({numref}`graph`, center) or between functional sub-networks ({numref}`graph`, left).
+
+```{figure} /images/graphe.png
+---
+height: 250px
+name: graph
+---
+Same correlation matrix with rows and columns unsorted (left) and sorted by similarity (right).
+```
+
+On the representation in the center of {numref}`graph`, the nodes of the graph represent the regions, while the edges represent the correlation between these regions (thickness and color coding the correlation value). On the left side, the nodes represent small functional networks, which are associated to each other to form a larger network. An edge then codes the average correlation between all regions of the two sub-networks it connects. 
+
 [Activity : Analysing correlation matrices](https://moodle.unistra.fr/mod/quiz/view.php?id=627410)
 
 
