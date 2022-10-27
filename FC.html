@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Resting state functional connectivity: definition and analysis &#8212; fMRI data analysis, connectivity study</title>
+    <title>Defintion(s) &#8212; fMRI data analysis, connectivity study</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -127,7 +127,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Resting state functional connectivity: definition and analysis
+   Defintion(s)
   </a>
  </li>
 </ul>
@@ -307,17 +307,17 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defintion-s">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Defintion(s)
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#identification-of-functional-networks-and-their-temporal-activity-during-rest">
    Identification of functional networks and their temporal activity during rest
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#correlation-analysis">
    Correlation analysis
   </a>
@@ -331,7 +331,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Resting state functional connectivity: definition and analysis</h1>
+                <h1>Defintion(s)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -341,17 +341,17 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defintion-s">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Defintion(s)
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#identification-of-functional-networks-and-their-temporal-activity-during-rest">
    Identification of functional networks and their temporal activity during rest
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#correlation-analysis">
    Correlation analysis
   </a>
@@ -366,11 +366,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="resting-state-functional-connectivity-definition-and-analysis">
-<h1>Resting state functional connectivity: definition and analysis<a class="headerlink" href="#resting-state-functional-connectivity-definition-and-analysis" title="Permalink to this headline">#</a></h1>
+  <p>s# Resting state functional connectivity: definition and analysis</p>
 <p>We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI and does not allow to analyze connectivity between different brain regions. We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI since it is impossible to define regressors in the absence of a paradigm and does not allow the analysis of connectivity at the scale of brain regions of interest to the neurologist/psychiatrist. The focus in this chapter is on the analysis of functional connectivity at the scale of anatomical regions or functional networks in task or resting state fMRI, and for group or single subject analyses.</p>
 <section id="defintion-s">
-<h2>Defintion(s)<a class="headerlink" href="#defintion-s" title="Permalink to this headline">#</a></h2>
+<h1>Defintion(s)<a class="headerlink" href="#defintion-s" title="Permalink to this headline">#</a></h1>
 <p>Functional connectivity is defined as the temporal similarity between activity of two (or more) different areas of the brain, <em>i.e.</em> theses regions co-activate to respond to a stimulus, to perform a cognitive task or to perform a spontaneous brain function. Regions that have a similar activity consistently over time form what is called a <strong>functional network</strong>.</p>
 <p>In order to measure the similarity between the time signatures of two regions, different criteria can be used:</p>
 <ul class="simple">
@@ -398,7 +397,7 @@ The correlation is equal to 1 if and only if <span class="math notranslate nohig
 <p>In practice, Pearson correlation is the most widely used metric to quantify functional connectivity. Its main drawback is that it measures the presence of a linear relationship between the two signals. Spearman correlation or mutual information are able to capture non linear relationship but have their own limitations, in particular for further statistical analysis of connectivity. For example, the mutual information needs to be estimated, making assumptions on the distribution of the values taken by the signals. The distribution can be estimated by the histogram of the data which can be affected by noise (due to acquisition, preprocessings, etc.).</p>
 </section>
 <section id="identification-of-functional-networks-and-their-temporal-activity-during-rest">
-<h2>Identification of functional networks and their temporal activity during rest<a class="headerlink" href="#identification-of-functional-networks-and-their-temporal-activity-during-rest" title="Permalink to this headline">#</a></h2>
+<h1>Identification of functional networks and their temporal activity during rest<a class="headerlink" href="#identification-of-functional-networks-and-their-temporal-activity-during-rest" title="Permalink to this headline">#</a></h1>
 <p>For task fMRI, GLM analysis is widely used, but for rest it is impossible to define regressors that represent spontaneous activity in the absence of stimuli. Most of the time, the search for functional networks at rest can be formulated, from a signal processing point of view, as a blind source separation problem. Indeed, it is a question of aggregating in the same network the voxels having a similar temporal signature. Remember that at rest signals contain mostly noise, spontaneous activity is more difficult to detect when we do not know when to look for useful information.</p>
 <p>In some studies, certain anatomical regions are of interest for the pathology concerned. The neuroscientists then use an atlas (i.e. an anatomical segmentation of the brain) to extract timecourses of the voxels belonging to these regions of interest (ROI). A mean signal is then computed for each ROI and the connectivity can be measured by correlation, mutual information, etc. Since the registration of fMRI data to the atlas (or vice versa) is never perfect and the spatial resolution of voxels in fMRI is very coarse, more robust strategies than simple averaging can be used to extract the time course for each ROI. Since the registration of fMRI data to the atlas (or vice versa) is never perfect and the spatial resolution of voxels in fMRI is very coarse, more robust strategies than simple averaging can be used to extract the timecourse for each ROI. From a signal and image processing point of view, signal unmixing methods are adapted to refine the estimation of the timecourse, even if most of the time, simplicity prevails over accuracy. Functional networks are then created by gathering ROIs with high connectivity.</p>
 <figure class="align-default" id="atlas">
@@ -412,7 +411,7 @@ These blind source separation methods allow to obtain for each spatial source it
 <p>ICA-based methods perform well in group analyses because they take advantage of the redundancy within each group to produce the best possible independent components. At the single-subject level, these methods produce very noisy (spatial) independant components, on the other hand it is possible to extract functional networks by ICA on the group and then analyze at the individual level the temporal signatures of these networks for each subject.</p>
 </section>
 <section id="correlation-analysis">
-<h2>Correlation analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this headline">#</a></h2>
+<h1>Correlation analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this headline">#</a></h1>
 <p>Once the signals of the networks or ROIs are extracted, we can implement a connectivity analysis through the calculation of correlation matrices. Many studies rely on these matrices to :</p>
 <ul class="simple">
 <li><p>identify functional networks or hidden structures in the correlation matrix revealing the functional activity of the patient,</p></li>
@@ -429,12 +428,14 @@ These blind source separation methods allow to obtain for each spatial source it
 <figure class="align-default" id="graph">
 <a class="reference internal image-reference" href="_images/graphe.png"><img alt="_images/graphe.png" src="_images/graphe.png" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Same correlation matrix with rows and columns unsorted (left) and sorted by similarity (right).</span><a class="headerlink" href="#graph" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Different representations of highly connected regions of the brain: by correlation matrix (right), graph where regions are nodes and correlation value are coded by edges (center) and graph where nodes are functional sub-networks (left).</span><a class="headerlink" href="#graph" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>On the representation in the center of <a class="reference internal" href="#graph"><span class="std std-numref">Fig. 12</span></a>, the nodes of the graph represent the regions, while the edges represent the correlation between these regions (thickness and color coding the correlation value). On the left side, the nodes represent small functional networks, which are associated to each other to form a larger network. An edge then codes the average correlation between all regions of the two sub-networks it connects.</p>
-<p><a class="reference external" href="https://moodle.unistra.fr/mod/quiz/view.php?id=627410">Activity : Analysing correlation matrices</a></p>
-</section>
+<div class="tip admonition">
+<p class="admonition-title">Activity</p>
+<p><a class="reference external" href="https://moodle.unistra.fr/mod/quiz/view.php?id=627410">Analysing correlation matrices</a></p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
