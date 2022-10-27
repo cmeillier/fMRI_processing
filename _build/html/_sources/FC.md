@@ -1,4 +1,4 @@
-# Resting state functional connectivity: definition and analysis
+s# Resting state functional connectivity: definition and analysis
 
 We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI and does not allow to analyze connectivity between different brain regions. We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI since it is impossible to define regressors in the absence of a paradigm and does not allow the analysis of connectivity at the scale of brain regions of interest to the neurologist/psychiatrist. The focus in this chapter is on the analysis of functional connectivity at the scale of anatomical regions or functional networks in task or resting state fMRI, and for group or single subject analyses.
 
@@ -77,11 +77,13 @@ While correlation matrices are widely used tools for representing and analyzing 
 height: 250px
 name: graph
 ---
-Same correlation matrix with rows and columns unsorted (left) and sorted by similarity (right).
+Different representations of highly connected regions of the brain: by correlation matrix (right), graph where regions are nodes and correlation value are coded by edges (center) and graph where nodes are functional sub-networks (left).
 ```
 
-On the representation in the center of {numref}`graph`, the nodes of the graph represent the regions, while the edges represent the correlation between these regions (thickness and color coding the correlation value). On the left side, the nodes represent small functional networks, which are associated to each other to form a larger network. An edge then codes the average correlation between all regions of the two sub-networks it connects. 
+On the representation in the center of {numref}`graph`, the nodes of the graph represent the regions, while the edges represent the correlation between these regions (thickness and color coding the correlation value). On the left side, the nodes represent small functional networks, which are associated to each other to form a larger network. An edge then codes the average correlation between all regions of the two sub-networks it connects.
 
-[Activity : Analysing correlation matrices](https://moodle.unistra.fr/mod/quiz/view.php?id=627410)
-
+```{admonition} Activity
+:class: tip
+[Analysing correlation matrices](https://moodle.unistra.fr/mod/quiz/view.php?id=627410)
+```
 
