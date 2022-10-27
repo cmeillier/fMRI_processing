@@ -1,4 +1,4 @@
-s# Resting state functional connectivity: definition and analysis
+# Resting state functional connectivity: definition and analysis
 
 We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI and does not allow to analyze connectivity between different brain regions. We have seen in the previous chapter a voxel-based analysis of connectivity in task fMRI with GLM. This type of modeling is not adapted to resting-state fMRI since it is impossible to define regressors in the absence of a paradigm and does not allow the analysis of connectivity at the scale of brain regions of interest to the neurologist/psychiatrist. The focus in this chapter is on the analysis of functional connectivity at the scale of anatomical regions or functional networks in task or resting state fMRI, and for group or single subject analyses.
 
