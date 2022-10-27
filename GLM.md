@@ -236,10 +236,11 @@ When $\sigma^2$ is unknown, an estimator of this variance must be used:
 ```{admonition} Activity
 :class: tip
 
-To deepen your understanding of the GLM: read section "A few examples on the early use of the GLM in fMRI - and some warnings". Identify the regressors that can be added to the design matrix as well as their advantages and possible disadvantages. In groups, discuss your answers and designate a reporter who will write the group's answers on the board, or complete the answers already given by the classmates.
+To deepen your understanding of the GLM: read section "A few examples on the early use of the GLM in fMRI - and some warnings" of the following paper:
 
 [*The general linear model and fMRI: Does love last forever?*, Jean-Baptiste Poline and Matthew Brett, NeuroImage 62 (2012) 871–880.](https://projects.iq.harvard.edu/files/imagenesmedicas/files/polinekd.pdf)
 
+Identify the regressors that can be added to the design matrix as well as their advantages and possible disadvantages. In groups, discuss your answers and designate a reporter who will write the group's answers on the board, or complete the answers already given by the classmates.
 ```
 
 
